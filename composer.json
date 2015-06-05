@@ -20,11 +20,10 @@
   },
   "extra": {
     "map": [
-      ["themes/default/skin", "public/skin/frontend/foo/default"],
-      ["themes/default/design", "public/app/design/frontend/foo/default"],
-      ["modules/My_Module/My_Module.xml", "public/app/etc/modules/My_Module.xml"],
-      ["modules/My_Module/code", "public/app/code/local/My/Module"],
-      ["modules/My_Module/frontend/layout/mymodule.xml", "public/app/design/frontend/base/default/layout/mymodule.xml"]
+      ["app/code/local/Symmetrics/Education", "app/code/local/Symmetrics/Education"],
+      ["app/design/frontend/base/default/layout", "app/design/frontend/base/default/layout"],
+      ["app/design/frontend/base/default/template/symmetrics/education", "app/design/frontend/base/default/template/symmetrics/education"],
+      ["app/etc/modules/Symmetrics_Education.xml", "app/etc/modules/Symmetrics_Education.xml"]
     ]
   }
 }
