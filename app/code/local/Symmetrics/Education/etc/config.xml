@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  Symmetrics
+ * @package   Symmetrics_Education
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
+ * @copyright 2015 symmetrics - a CGI Group brand
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.symmetrics.de/
+ */
+-->
+<config>
+    <modules>
+        <Symmetrics_Education>
+            <version>0.1.9</version>
+        </Symmetrics_Education>
+    </modules>
+    <global>
+        <models>
+            <education>
+                <class>Symmetrics_Education_Model</class>
+                <resourceModel>education_setup</resourceModel>
+            </education>
+            <education_setup>
+                <class>Symmetrics_Education_Model_Mysql4</class>
+            </education_setup>
+        </models>
+        <resources>
+            <education_setup>
+                <setup>
+                    <module>Symmetrics_Education</module>
+                    <class>Symmetrics_Education_Model_Resource_Setup</class>
+                </setup>
+            </education_setup>
+        </resources>
+        <helpers>
+            <education>
+                <class>Symmetrics_Education_Helper</class>
+            </education>
+        </helpers>
+        <blocks>
+            <education>
+                <class>Symmetrics_Education_Block</class>
+            </education>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_grid>Symmetrics_Education_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
+                    <sales_order_totals>Symmetrics_Education_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>
+                    <sales_order_invoice_totals>Symmetrics_Education_Block_Adminhtml_Sales_Order_Invoice_Totals</sales_order_invoice_totals>
+                    <sales_order_creditmemo_totals>Symmetrics_Education_Block_Adminhtml_Sales_Order_Creditmemo_Totals</sales_order_creditmemo_totals>
+                </rewrite>
+            </adminhtml>
+            <sales>
+                <rewrite>
+                    <order_totals>Symmetrics_Education_Block_Sales_Order_Totals</order_totals>
+                    <order_invoice_totals>Symmetrics_Education_Block_Sales_Order_Invoice_Totals</order_invoice_totals>
+                    <order_creditmemo_totals>Symmetrics_Education_Block_Sales_Order_Creditmemo_Totals</order_creditmemo_totals>
+                </rewrite>
+            </sales>
+        </blocks>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <additional_shipping_cost />
+                    </product_attributes>
+                </item>
+                <totals>
+                    <additional_shipping_cost>
+                        <class>education/total_quote_additionalShippingCost</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </additional_shipping_cost>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <additional_shipping_cost>
+                        <class>education/total_invoice_additionalShippingCost</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </additional_shipping_cost>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                <totals>
+                    <additional_shipping_cost>
+                        <class>education/total_creditmemo_additionalShippingCost</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </additional_shipping_cost>
+                </totals>
+            </order_creditmemo>
+        </sales>
+        <fieldsets>
+            <sales_convert_quote_item>
+                <additional_shipping_cost>
+                    <to_order_item>*</to_order_item>
+                </additional_shipping_cost>
+            </sales_convert_quote_item>
+            <sales_convert_order_item>
+                <additional_shipping_cost>
+                    <to_quote_item>*</to_quote_item>
+                </additional_shipping_cost>
+            </sales_convert_order_item>
+        </fieldsets>
+        <events>
+            <sales_quote_item_set_product>
+                <observers>
+                    <education>
+                        <class>education/observer</class>
+                        <method>salesQuoteItemSetAdditionalCost</method>
+                    </education>
+                </observers>
+            </sales_quote_item_set_product>
+        </events>
+        <pdf>
+            <totals>
+                <rowtotal translate="title">
+                    <title>Additional shipping cost</title>
+                    <source_field>rowtotal</source_field>
+                    <model>Symmetrics_Education_Model_Pdf_Total</model>
+                    <font_size>7</font_size>
+                    <display_zero>1</display_zero>
+                    <sort_order>500</sort_order>
+                </rowtotal>
+            </totals>
+        </pdf>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <education>
+                    <file>education.xml</file>
+                </education>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Symmetrics_Education>
+                    <files>
+                        <default>Symmetrics_Education.csv</default>
+                    </files>
+                </Symmetrics_Education>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Symmetrics_Education after="Mage_Adminhtml">Symmetrics_Education</Symmetrics_Education>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <sales>
+            <totals_sort>
+                <additional_shipping_cost>1</additional_shipping_cost>
+            </totals_sort>
+        </sales>
+        <education_config>
+            <education_group>
+                <number_of_products>3</number_of_products>
+                <title_of_block>Top 3 products</title_of_block>
+            </education_group>
+        </education_config>
+    </default>
+</config>

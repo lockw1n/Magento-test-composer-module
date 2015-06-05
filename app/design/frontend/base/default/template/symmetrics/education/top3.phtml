@@ -1,0 +1,65 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  Symmetrics
+ * @package   Symmetrics_Education
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
+ * @copyright 2015 symmetrics - a CGI Group brand
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.symmetrics.de/
+ */
+
+/** @var $this Symmetrics_Education_Block_Widget_Top3 */
+
+$_products = $this->getTopProducts();
+?>
+
+<?php if ($_products && $_products->count()): ?>
+    <div class="block block-list block-top-3">
+        <div class="block-title">
+            <strong><span><?php echo $this->getWidgetName() ?></span></strong>
+        </div>
+        <div class="block-content">
+            <ol id="top-3-products-items" class="mini-products-list">
+                <?php foreach ($_products as $_item): ?>
+                    <li class="item">
+                        <a href="<?php echo $_item->getProductUrl() ?>">
+                            <span class="product-image">
+                                <img src="<?php echo $this->helper('catalog/image')
+                                    ->init($_item, 'thumbnail')
+                                    ->resize(50, 50)
+                                    ->setWatermarkSize('30x10'); ?>"
+                                     width="50" height="50"
+                                     alt="<?php echo $this->getProductName() ?>"/>
+                            </span>
+                        </a>
+                        <div class="product-details">
+                            <p class="product-name" style="padding-top: 4px">
+                                <a href="<?php echo $_item->getProductUrl() ?>">
+                                    <?php echo $this->helper('catalog/output')
+                                        ->productAttribute(
+                                            $_item, $_item->getName(), 'name'
+                                        ) ?>
+                                </a>
+                            </p>
+                            <div class="price-info">
+                                <?php echo $this->getPrice($_item) ?>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach ?>
+            </ol>
+        </div>
+    </div>
+<?php endif ?>

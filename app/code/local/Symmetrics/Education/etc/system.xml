@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  Symmetrics
+ * @package   Symmetrics_Education
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
+ * @copyright 2015 symmetrics - a CGI Group brand
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.symmetrics.de/
+ */
+-->
+<config>
+    <tabs>
+        <education_config translate="label" module="education">
+            <label>Education settings</label>
+            <sort_order>10</sort_order>
+        </education_config>
+    </tabs>
+    <sections>
+        <sales module="sales">
+            <groups>
+                <totals_sort>
+                    <fields>
+                        <additional_shipping_cost translate="label">
+                            <label>Additional shipping cost</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </additional_shipping_cost>
+                    </fields>
+                </totals_sort>
+            </groups>
+        </sales>
+        <education_config translate="label" module="education">
+            <label>Top 3</label>
+            <tab>education_config</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <education_group translate="label" module="education">
+                    <label>Top 3 options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <number_of_products translate="label comment">
+                            <label>Number of products</label>
+                            <comment>Number of products that should be displayed in the widget.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </number_of_products>
+                        <title_of_block translate="label comment">
+                            <label>Title of block</label>
+                            <comment>Title of block that will be displayed above the Top 3 block.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_of_block>
+                    </fields>
+                </education_group>
+            </groups>
+        </education_config>
+    </sections>
+</config>

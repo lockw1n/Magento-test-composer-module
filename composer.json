@@ -1,0 +1,30 @@
+{
+  "name": "lockw1n/Magento-test-composer-module",
+  "type": "magento-module",
+  "license":"OSL-3.0",
+  "description":"Education module, configured as composer module for Magento EE",
+  "authors":[
+    {
+      "name":"Aleksey Kotsuba",
+      "email":"aleksey.kotsuba@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:lockw1n/Magento-test-composer-module.git"
+    }
+  ],
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "extra": {
+    "map": [
+      ["themes/default/skin", "public/skin/frontend/foo/default"],
+      ["themes/default/design", "public/app/design/frontend/foo/default"],
+      ["modules/My_Module/My_Module.xml", "public/app/etc/modules/My_Module.xml"],
+      ["modules/My_Module/code", "public/app/code/local/My/Module"],
+      ["modules/My_Module/frontend/layout/mymodule.xml", "public/app/design/frontend/base/default/layout/mymodule.xml"]
+    ]
+  }
+}
